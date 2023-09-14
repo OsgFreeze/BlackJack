@@ -203,6 +203,7 @@ public class test {
         }
     }
 
+    /*
     public static void splitCards(double[] cards){
         if(cards[0] == cards[1]){
             System.out.println("Do you want to Split? (y/n)");
@@ -220,7 +221,7 @@ public class test {
             }
         }
     }
-
+    */
     public static boolean checkForAce(double[] cards){
         for (double card : cards) {
             if (card == 11) {
