@@ -259,6 +259,8 @@ public class test {
             case 2:
                 System.out.println("Unentschieden! \n Nochmal? \n JA (1) | NEIN (0)");
                 break;
+            default:
+                System.out.println("Invalid input!");
         }
     }
 
