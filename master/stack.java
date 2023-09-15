@@ -3,15 +3,33 @@ package master;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-public class test {
+public class stack {
 
-    static Scanner input = new Scanner(System.in);
-    static double[] playerCards = new double[10];
-    static double[] dealerCards = new double[10];
+    Scanner input = new Scanner(System.in);
+    double[] playerCards = new double[10];
+    double[] dealerCards = new double[10];
 
-    public static void main(String[] args) throws InterruptedException {
+    /*
+    public void dealStartHand(){
 
-        System.out.println("Guten Tag!");
+        double playerVal;
+        double dealerVal;
+
+        // Player Starthand
+        System.out.println("Du hast 2 Karten bekommen: ");
+        generateCards(2, 0, 1);
+        playerVal = getVal(playerCards);
+        System.out.println("Your Value: " + playerVal);
+
+        // Dealer Starthand
+        System.out.println("Der Dealer hat: ");
+        generateCards(2, 0, 2);
+        dealerVal = getVal(dealerCards);
+        System.out.println("Dealer Value: " + dealerVal);
+    }
+    */
+
+    public void play() throws InterruptedException {
 
         while(true){
 
@@ -157,7 +175,7 @@ public class test {
         }
     }
 
-    public static void generateCards(int number, int start, int actor){
+    public void generateCards(int number, int start, int actor){
 
         // Generate number between 1 and 11 and write to Array
         for(int i = start; i < start+number; i++){
@@ -196,33 +214,14 @@ public class test {
         }
     }
 
-    public static void checkForAceStart(double[] cards){
+    public void checkForAceStart(double[] cards){
         // Both Cards Ace
         if(cards[0] == 11 && cards[1] == 11){
             cards[0] = 1;
         }
     }
 
-    /*
-    public static void splitCards(double[] cards){
-        if(cards[0] == cards[1]){
-            System.out.println("Do you want to Split? (y/n)");
-            char optr = input.next().charAt(0);
-            switch (optr){
-                case 'y':
-                    double[] stackOne = new double[10];
-                    double[] stackTwo = new double[10];
-                    stackOne[0] = cards[0];
-                    stackTwo[0] = cards[0];
-                    // TODO: Spielvorgang in eigene Klasse auslagern und dann hier zwei mal aufrufen
-                    break;
-                case 'n':
-                    break;
-            }
-        }
-    }
-    */
-    public static boolean checkForAce(double[] cards){
+    public boolean checkForAce(double[] cards){
         for (double card : cards) {
             if (card == 11) {
                 return true;
@@ -231,7 +230,7 @@ public class test {
         return false;
     }
 
-    public static void flipAce(double[] cards){
+    public void flipAce(double[] cards){
         for(int i = 0; i < cards.length; i++){
             if(cards[i] == 11){
                 cards[i] = 1;
@@ -239,7 +238,7 @@ public class test {
         }
     }
 
-    public static double getVal(double[] cards){
+    public double getVal(double[] cards){
         // Get Value of all cards in cards[]
         double val = 0;
         for (double card : cards) {
@@ -248,7 +247,7 @@ public class test {
         return val;
     }
 
-    public static void printMsg(int num){
+    public void printMsg(int num){
         switch (num){
             case 0:
                 System.out.println("Du hast verloren! \n Nochmal? \n JA (1) | NEIN (0)");
@@ -264,11 +263,10 @@ public class test {
         }
     }
 
-    public static void cleanCards(){
+    public void cleanCards(){
         for(int i = 0; i < playerCards.length ; i++){
             playerCards[i] = 0;
             dealerCards[i] = 0;
         }
     }
-
 }
