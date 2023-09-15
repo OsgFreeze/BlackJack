@@ -12,10 +12,6 @@ public class user {
         this.balance = amt;
     }
 
-    public int getBalance(){
-        return this.balance;
-    }
-
     public void bet(){
         System.out.println("Place your bet: ");
         bet = scanner.nextInt();

@@ -1,9 +1,5 @@
 package master;
 
-import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
-
-
 public class agent {
 
     static user player = new user();
