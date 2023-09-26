@@ -1,20 +1,29 @@
 package master;
 
+import java.io.IOException;
+
 public class agent {
 
     static user player = new user();
     static stack stackOne = new stack();
+    static api aapi = new api();
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
 
         System.out.println("Guten Tag!");
-        player.balance = 10000;
+        player.balance = aapi.apiget();
+
         int state;
 
         while(true){
 
-            player.bet();
+            player.printBalance();
+            boolean valid = player.bet();
+            if(!valid){
+                continue;
+            }
 
+            // deal and evaluate start Hand
             stackOne.dealStartHand();
             int sRes = stackOne.evaluateStartHand();
             state = handleHand(sRes);
@@ -24,30 +33,34 @@ public class agent {
                 continue;
             }
 
-            // Check if you won already
-
+            // play Game and evaluate Outcome
             int pRes = stackOne.play();
             state = handleHand(pRes);
             if(state < 0){
                 return;
             }
 
+            // clean Arrays
             stackOne.cleanCards();
         }
     }
 
-    public static int handleHand(int res){
+    public static int handleHand(int res) throws IOException {
         switch (res){
             case 0:
                 // You loose
 
                 // Adjust Balance
                 player.loose();
+                if(player.balance == 0){
+                    return -1;
+                }
 
                 // End-Message
                 int x = stackOne.printMsg(0);
                 if(x <= 0){
                     // Quit
+                    updateBalance();
                     return -1;
                 }
                 // Continue
@@ -62,6 +75,7 @@ public class agent {
                 int y = stackOne.printMsg(1);
                 if(y <= 0){
                     // Quit
+                    updateBalance();
                     return -1;
                 }
                 // Continue
@@ -76,6 +90,7 @@ public class agent {
                 int z = stackOne.printMsg(2);
                 if(z <= 0){
                     // Quit
+                    updateBalance();
                     return -1;
                 }
                 // Continue
@@ -91,6 +106,11 @@ public class agent {
                 // Continue to play
                 return 0;
         }
+    }
+
+    public static void updateBalance() throws IOException {
+        aapi.apidelete();
+        aapi.apipost(player.balance);
     }
 
 }

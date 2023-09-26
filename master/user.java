@@ -12,14 +12,20 @@ public class user {
         this.balance = amt;
     }
 
-    public void bet(){
+    public int getBalance(){
+        return this.balance;
+    }
+
+    public boolean bet(){
         System.out.println("Place your bet: ");
         bet = scanner.nextInt();
         if(bet > balance){
             System.out.println("You only have " + balance + " Chips");
+            return false;
         }else{
             setBalance(balance - bet);
             System.out.println("You placed " + bet + " Chips \nTotal Chips: " + balance);
+            return true;
         }
     }
 
@@ -38,6 +44,10 @@ public class user {
         setBalance(balance + bet);
         System.out.println("Its a Tie! You regain " + bet + " Chips \nTotal Chips: " + balance);
         bet = 0;
+    }
+
+    public void printBalance(){
+        System.out.println("You have " + balance + " Chips");
     }
 
 }

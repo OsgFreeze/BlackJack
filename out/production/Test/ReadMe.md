@@ -7,5 +7,5 @@ Missing Features
 2. Split einbauen
 -> Karten splitten wenn 2 gleiche gezogen werden
 
-3. Balance implementieren
--> Spieler bekommt Münzen und kann diese setzen
+3. Balance implementieren 
+-> Spieler bekommt Münzen und kann diese setzen ✔
