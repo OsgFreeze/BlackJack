@@ -57,7 +57,7 @@ public class agent {
                 }
 
                 // End-Message
-                int x = stackOne.printMsg(0);
+                int x = stackOne.printMsg();
                 if(x <= 0){
                     // Quit
                     updateBalance();
@@ -72,7 +72,7 @@ public class agent {
                 player.win();
 
                 // End-Message
-                int y = stackOne.printMsg(1);
+                int y = stackOne.printMsg();
                 if(y <= 0){
                     // Quit
                     updateBalance();
@@ -87,7 +87,7 @@ public class agent {
                 player.tie();
 
                 // End-Message
-                int z = stackOne.printMsg(2);
+                int z = stackOne.printMsg();
                 if(z <= 0){
                     // Quit
                     updateBalance();

@@ -55,18 +55,9 @@ public class stack {
         return -1;
     }
 
-    public int printMsg(int num){
-        switch (num){
-            case 0:
-                System.out.println("Du hast verloren! \n Nochmal? \n JA (1) | NEIN (0)");
-                break;
-            case 1:
-                System.out.println("Du hast gewonnen! \n Nochmal? \n JA (1) | NEIN (0)");
-                break;
-            case 2:
-                System.out.println("Unentschieden! \n Nochmal? \n JA (1) | NEIN (0)");
-                break;
-        }
+    public int printMsg(){
+
+        System.out.println("Nochmal? \n JA (1) | NEIN (0)");
         int res = input.nextInt();
         if(res == 0){
             return 0;
