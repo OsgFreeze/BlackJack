@@ -1,6 +1,7 @@
 package master;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class agent {
 
@@ -12,6 +13,13 @@ public class agent {
 
         System.out.println("Guten Tag!");
         player.balance = aapi.apiget();
+        if(player.balance == 0){
+            aapi.apidelete();
+            aapi.apipost(10000);
+            player.balance = aapi.apiget();
+            // ToDo: implement a system to repay your loan at a certain balance eg. 30000k
+        }
+        TimeUnit.SECONDS.sleep(3);
 
         int state;
 
@@ -53,6 +61,7 @@ public class agent {
                 // Adjust Balance
                 player.loose();
                 if(player.balance == 0){
+                    updateBalance();
                     return -1;
                 }
 
