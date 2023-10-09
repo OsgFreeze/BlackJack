@@ -25,6 +25,11 @@ public class agent {
         while (true){
             boolean split = false;
 
+            // Clean cards
+            stack.cleanCards(player.pCards2);
+            stack.cleanCards(player.pCards1);
+            stack.cleanCards(dealer.dealerCards);
+
             player.printBalance();
             if(!player.bet()){
                 continue;
@@ -99,11 +104,6 @@ public class agent {
                 eRes = stack.evaluateFinal(player.pVal1, dealer.dealerVal);
                 adjustBalanceOne(eRes);
             }
-
-            // Clean cards
-            stack.cleanCards(player.pCards2);
-            stack.cleanCards(player.pCards1);
-            stack.cleanCards(dealer.dealerCards);
 
             // Replay?
             int x = stack.printMsg();
